@@ -1,0 +1,7 @@
+site_name: Diamond Hunt Docs
+nav:
+  - About: index.md
+  - Architecture: architecture.md
+  - Attestations: attestations.md
+  - Deployment: deployment.md
+  - Contracts: contracts.md
