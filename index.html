@@ -109,16 +109,29 @@
 <h1 id="welcome-to-diamond-hunt-docs">Welcome to Diamond Hunt Docs</h1>
 <p>AAS Social credit system</p>
 <h2 id="about">About</h2>
-<p>Diamond hunt is a on chain social credit system. The credits are awarded with a Diamond ERC20 token to users who recieve attestations based on interacting with avalanche projects.</p>
+<p>Diamond hunt is a on chain social credit system. The credits are awarded with a
+Diamond ERC20 token to users who recieve attestations based on interacting with
+avalanche projects.</p>
 <p>The projects has two github repositories:</p>
 <ul>
 <li><a href="https://github.com/avax-attestations/passport-contracts">passport-contracts</a> contains the solidity contracts and a client library for interacting with them and creating schemas</li>
 <li><a href="https://github.com/avax-attestations/passport-frontend/">passport-frontend</a> contains both the frontend and API for signing attestations</li>
 </ul>
 <h2 id="how-it-works">How it works</h2>
-<p>Instead of the usual attestation flow where an EOA attests something for a recipient address the diamond hunt application uses a proxy contract to make the attestations. This allows end users to submit transactions (and pay for gas). The diamond hunt proxy only accepts attestations with a corresponding EIP712 signature from a trusted EOA address. The signed attestations are created by a web app with the private key of the trusted signing address. Upon succesful attestation the proxy mints an amount of diamonds to the attestation recipient.</p>
+<p>Instead of the usual attestation flow where an EOA attests something for a
+recipient address the diamond hunt application uses a proxy contract to make the
+attestations. This allows end users to submit transactions (and pay for gas).
+The diamond hunt proxy only accepts attestations with a corresponding EIP712
+signature from a trusted EOA address. The signed attestations are created by a
+web app with the private key of the trusted signing address. Upon succesful
+attestation the proxy mints an amount of diamonds to the attestation recipient.</p>
 <h2 id="whats-next">Whats next</h2>
-<p>You can read about the [Architecture][architecture.md] to gain a deeper insight into how the system works. The <a href="attestations/">Attestations</a> page has a guide for expanding the system by adding new attestations types. The <a href="deployment/">Deployment</a> page contains information about the CI/CD process for deploying updates. The <a href="contracts/">Contracts</a> page contains addresses for all deployed contracts and ID's of schemas.</p></div>
+<p>You can read about the <a href="architecture/">Architecture</a> to gain a deeper insight
+into how the system works. The <a href="attestations/">Attestations</a> page has a guide
+for expanding the system by adding new attestations types. The
+<a href="deployment/">Deployment</a> page contains information about the CI/CD process
+for deploying updates. The <a href="contracts/">Contracts</a> page contains addresses for
+all deployed contracts and ID's of schemas.</p></div>
             </div>
         </div>
 
@@ -200,5 +213,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2024-09-15 21:28:55.952109+00:00
+Build Date UTC : 2024-09-15 21:30:45.769175+00:00
 -->
