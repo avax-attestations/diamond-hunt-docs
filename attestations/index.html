@@ -87,26 +87,22 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#adding-new-attestations" class="nav-link">Adding new attestations</a>
               <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="1"><a href="#creating-schema" class="nav-link">Creating Schema</a>
+            <li class="nav-item" data-bs-level="2"><a href="#aas" class="nav-link">AAS</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="1"><a href="#creating-rewarder" class="nav-link">Creating Rewarder</a>
+            <li class="nav-item" data-bs-level="2"><a href="#diamond-hunt-proxy" class="nav-link">Diamond Hunt Proxy</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="1"><a href="#enabling-in-proxy" class="nav-link">Enabling in Proxy</a>
+            <li class="nav-item" data-bs-level="2"><a href="#diamond-hunt-frontend" class="nav-link">Diamond Hunt Frontend</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="1"><a href="#example" class="nav-link">Example</a>
+            <li class="nav-item" data-bs-level="2"><a href="#see-also" class="nav-link">See also</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -115,10 +111,26 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="adding-new-attestations">Adding new attestations</h1>
-<h1 id="creating-schema">Creating Schema</h1>
-<h1 id="creating-rewarder">Creating Rewarder</h1>
-<h1 id="enabling-in-proxy">Enabling in Proxy</h1>
-<h1 id="example">Example</h1></div>
+<p>This is a quick guide for adding new attestation types to diamond hunt.</p>
+<h2 id="aas">AAS</h2>
+<p>Follow the usual route for registering a schema with the schema registry.</p>
+<h2 id="diamond-hunt-proxy">Diamond Hunt Proxy</h2>
+<p>Deploy a rewarder for you attestation (see <a href="">example-rewarders</a>).
+Decide on a <em>string</em> name for your attestation.
+Enable the schema in the proxy with the name and rewarder.</p>
+<pre><code>proxy.addAttestationType(name, schemaId, rewarderAddress)
+</code></pre>
+<h2 id="diamond-hunt-frontend">Diamond Hunt Frontend</h2>
+<p>The frontend is probably the trickiest to get right and ensure the system remains sound. There are a few parts that must be done to enable a new attestation type.</p>
+<h3 id="config">Config</h3>
+<p>Add schema ID and schema encoder to <em>lib/config.ts</em>
+Upload an image for the frontend with the same name as given to the schema when enabling in the proxy.</p>
+<h3 id="frontend">Frontend</h3>
+<p>Add an <code>AttestationCard</code> to <em>pages/index.ts</em> for the new attestation.</p>
+<p>Add validation functions for the attestation, for example these could be checking if the user already has the attestation or meets certain criteria (such as an external API call). It is important these functions are used both on the client and in the API when signing the attestation.</p>
+<p>Add a function to sign the attestation, examples can be found in <em>lib/signing/*.ts</em>. It is important when an attestation is signed that no new attestation is signed for the same address withing the <code>deadline</code> provided when signing the API. In the passport-frontend application a redis cache is used to cache the signed attestations with a TTL matching the deadline value.</p>
+<h2 id="see-also">See also</h2>
+<p>See the <em>Makefile</em> in the <a href="https://github.com/avax-attestations/passport-contracts/blob/main/Makefile">passport-contracts</a> repo for examples of using a javascript CLI to create and enable schemas.</p></div>
             </div>
         </div>
 
